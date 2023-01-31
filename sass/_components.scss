@@ -219,7 +219,7 @@
 .overview {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--color-grey-light-3);
+  border-bottom: var(--border-bottom);
 
   &__heading {
     font-size: 2.25rem;
@@ -289,8 +289,17 @@
   background-color: transparent;
   transition: all 0.2s;
 
+  & span {
+    margin-left: 3px;
+    transition: margin-left 0.2s;
+  }
+
   &:hover {
     color: var(--color-grey-dark-1);
+
+    span {
+      margin-left: 8px;
+    }
   }
 
   &:focus {
@@ -312,5 +321,138 @@
   100% {
     transform: scale(1);
     box-shadow: none;
+  }
+}
+
+/////////////////////////////////////
+/// Description: Paraghraph
+
+.paragraph:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+
+/////////////////////////////////////
+/// Description: List
+.list {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: var(--border-bottom);
+  border-bottom: var(--border-bottom);
+
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    flex: 0 0 50%;
+    margin-bottom: 0.7rem;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.7rem;
+
+      // Older Browsers
+      // background-image: url(../img/chevron-thin-right.svg);
+      // background-size: cover;
+
+      // New Browsers
+      background-color: var(--color-primary);
+      -webkit-mask-image: url(../img/chevron-thin-right.svg);
+      -webkit-mask-size: cover;
+      mask-image: url(../img/chevron-thin-right.svg);
+      mask-size: cover;
+    }
+  }
+}
+
+/////////////////////////////////////
+/// Description: Recommend
+.recommend {
+  font-size: 1.3rem;
+  color: var(--color-grey-light-4);
+  display: flex;
+  align-items: center;
+
+  &__count {
+    margin-right: auto;
+  }
+
+  &__photo {
+    box-sizing: content-box;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    border: 3px solid #fff;
+
+    &:not(:last-child) {
+      margin-right: -1.5rem;
+    }
+  }
+}
+
+/////////////////////////////////////
+/// Review
+
+.review {
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "\201C";
+    position: absolute;
+    top: 7rem;
+    left: -1rem;
+    font-size: 20rem;
+    color: var(--color-grey-light-3);
+    font-family: sans-serif;
+    line-height: 1rem;
+    z-index: 1;
+  }
+
+  &__text {
+    margin-bottom: 2rem;
+    z-index: 100;
+    position: relative;
+  }
+  &__user {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  &__photo {
+    height: 4.5rem;
+    width: 4.5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+
+  &__user-box {
+    margin-right: auto;
+  }
+
+  &__user-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  &__user-date {
+    font-size: 1rem;
+    color: var(--color-grey-dark-3);
+  }
+
+  &__rating {
+    color: var(--color-primary);
+    font-size: 2.2rem;
+    font-weight: 300;
   }
 }
